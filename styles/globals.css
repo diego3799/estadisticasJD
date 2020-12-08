@@ -2,6 +2,50 @@
 @tailwind components;
 @tailwind utilities;
 
+.backNaranja {
+  background-image: url("/patron-naranja.png");
+  background-color: #fda335;
+  height: 100vh;
+  background-size: 300px 300px;
+}
+.backNav {
+  background-image: url("/patron-naranja.png");
+  background-color: #fda335;
+  height: 100vh;
+  background-size: 250px 250px;
+}
+.backGris {
+  background-image: url("/patron-gris.png");
+  background-size: 250px 250px;
+}
+
+.link::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #ffffff;
+  transition: width .3s;
+}
+.activeLink::after{
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: #ffffff;
+}
+
+.link:hover::after{
+  width: 100%;
+   transition: width .3s;
+} 
+
+.cardPosition {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 html,
 body {
   padding: 0;

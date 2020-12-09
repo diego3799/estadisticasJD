@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import Head from "next/head";
 import Link from "next/link";
@@ -6,9 +6,13 @@ import { useRouter } from "next/router";
 
 const Layout = ({ children }) => {
   const router = useRouter();
-
+  useEffect(() => {
+    if (localStorage.getItem("jwt") === null) {
+      router.push("/signin");
+    }
+  }, []);
   return (
-    <div className="flex">
+    <div className="md:flex block">
       <Head>
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
@@ -16,11 +20,11 @@ const Layout = ({ children }) => {
           rel="stylesheet"
         />
       </Head>
-      <div className="bg-foodie  w-1/6 h-screen shadow-xl backNav">
+      <div className="bg-foodie  md:w-1/6 md:h-screen h-1/6 sticky top-0 shadow-xl backNav z-10">
         <h1 className="font-foddie font-extrabold text-white text-6xl text-center pt-5">
           foodie
         </h1>
-        <nav className="h-1/5 mt-10">
+        <nav className="h-1/5 hidden md:block mt-10">
           <ul className="flex flex-col h-full justify-between text-white font-foddie text-3xl  text-center">
             <Link href="/">
               <li
@@ -53,7 +57,7 @@ const Layout = ({ children }) => {
           </ul>
         </nav>
       </div>
-      <main className="w-5/6 border h-screen overflow-x-auto backGris">
+      <main className=" z-0 md:w-5/6 h-1/6 border md:pt-0 pt-10 md:h-screen overflow-x-auto backGris">
         {children}
       </main>
     </div>

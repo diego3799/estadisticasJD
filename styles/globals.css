@@ -5,7 +5,7 @@
 .backNaranja {
   background-image: url("/patron-naranja.png");
   background-color: #fda335;
-  /* height: 100vh; */
+  height: 100vh;
   background-size: 300px 300px;
 }
 .backNav {

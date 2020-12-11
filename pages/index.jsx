@@ -27,7 +27,9 @@ export default function Home() {
           <PStats>15</PStats>
         </Card>
       </div>
-      <Card className="h-2/3 mx-10 ">Carrusel de images</Card>
+      <Card className="h-2/3 mx-10 p-40 ">
+        <img src="/chilis1.jpeg" className="h-full mx-auto" />
+      </Card>
     </Layout>
   );
 }

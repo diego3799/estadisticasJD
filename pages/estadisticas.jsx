@@ -6,6 +6,7 @@ import {
   BarChart,
   CartesianGrid,
   Legend,
+  Line,
   LineChart,
   RadialBar,
   RadialBarChart,
@@ -34,79 +35,65 @@ const Estadisticas = () => {
   }, []);
   return (
     <Layout>
-      <div className="">
-        <Card className="w-full">
-          <ResponsiveContainer height={200} width="100%">
-            <BarChart data={ventaProductos}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="name" />
-              <YAxis />
-              <Tooltip />
-              <Legend />
-              <Bar dataKey="amount" fill="#8884d8" />
-            </BarChart>
-          </ResponsiveContainer>
-        </Card>
+      <div className=" container mx-auto pt-10 ">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <Card>
+            <h1>Venta de Productos</h1>
+            <ResponsiveContainer height={200} width="100%">
+              <BarChart data={ventaProductos}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="name" />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                <Bar dataKey="amount" fill="#fdc35d" />
+              </BarChart>
+            </ResponsiveContainer>
+          </Card>
 
-        <Card>
-          <ResponsiveContainer height={260} width="100%">
-            <RadialBarChart
-              innerRadius="30%"
-              outerRadius="100%"
-              margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
-              data={[]}
-              startAngle={360}
-              endAngle={0}
-            >
-              <RadialBar
-                minAngle={15}
-                label={{ fill: "#666", position: "insideStart" }}
-                background
-                clockWise={true}
-                dataKey="amount"
-              />
-              <Tooltip />
-              <Legend
-                iconSize={10}
-                width={120}
-                height={140}
-                layout="horizontal"
-                verticalAlign="middle"
-                align="right"
-              />
-            </RadialBarChart>
-          </ResponsiveContainer>
-        </Card>
-        <Card>
-          <ScatterChart
-            width={730}
-            height={250}
-            margin={{ top: 20, right: 20, bottom: 10, left: 10 }}
-          >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" name="name" />
-            <YAxis dataKey="amount" name="amount" />
-            {/* <ZAxis dataKey="z" range={[64, 144]} name="score" unit="km" /> */}
-            <Tooltip cursor={{ strokeDasharray: "3 3" }} />
-            <Legend />
-            <Scatter name="A school" data={volumenProductos} fill="#8884d8" />
-          </ScatterChart>
-        </Card>
-        <Card>
-          <LineChart
-            width={730}
-            height={250}
-            margin={{ top: 20, right: 20, bottom: 10, left: 10 }}
-          >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" name="Tipo" />
-            <YAxis dataKey="amount" name="Vendidos" />
-            {/* <ZAxis dataKey="z" range={[64, 144]} name="score" unit="km" /> */}
-            <Tooltip cursor={{ strokeDasharray: "3 3" }} />
-            <Legend />
-            <Scatter name="A school" data={ventaCategoria} fill="#8884d8" />
-          </LineChart>
-        </Card>
+          <Card>
+            <h1>Volumen Productos</h1>
+            <ResponsiveContainer height={200} width="100%">
+              <ResponsiveContainer height={200} width="100%">
+                <LineChart data={volumenProductos}>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="name" />
+                  <YAxis dataKey="amount" />
+                  <Tooltip />
+                  <Line type="monotone" dataKey="amount" stroke="#325871" />
+                </LineChart>
+              </ResponsiveContainer>
+            </ResponsiveContainer>
+          </Card>
+          <Card>
+            <h1>Venta de Categoria</h1>
+            <ResponsiveContainer height={200} width="100%">
+              <BarChart data={ventaCategoria}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="name" />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                <Bar dataKey="amount" fill="#fdc35d" />
+              </BarChart>
+            </ResponsiveContainer>
+          </Card>
+          <Card>
+            <h1>Volumen Categoria</h1>
+            <ResponsiveContainer height={200} width="100%">
+              <LineChart data={volumenCategoria}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="name" />
+                <YAxis dataKey="amount" />
+                <Tooltip />
+                <Line type="monotone" dataKey="amount" stroke="#325871" />
+              </LineChart>
+            </ResponsiveContainer>
+          </Card>
+        </div>
+        <div className="flex justify-end mt-10">
+          <button className="bg-foodie py-3 px-5 rounded-md text-white font-bold cursor-pointer">Obtener Reportes</button>
+        </div>
       </div>
     </Layout>
   );

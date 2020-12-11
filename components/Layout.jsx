@@ -45,7 +45,7 @@ const Layout = ({ children }) => {
               </li>
             </Link>
 
-            <Link href="/reportes">
+            {/* <Link href="/reportes">
               <li
                 className={`link  ${
                   router.pathname === "/reportes" && "activeLink font-bold"
@@ -53,7 +53,7 @@ const Layout = ({ children }) => {
               >
                 <a>Reportes</a>
               </li>
-            </Link>
+            </Link> */}
           </ul>
         </nav>
       </div>
